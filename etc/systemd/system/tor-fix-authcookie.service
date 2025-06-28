@@ -1,0 +1,11 @@
+[Unit]
+Description=Fix Tor control.authcookie permissions
+After=tor.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/chmod 600 /run/tor/control.authcookie
+ExecStart=/usr/bin/chown debian-tor:debian-tor /run/tor/control.authcookie
+
+[Install]
+WantedBy=multi-user.target
